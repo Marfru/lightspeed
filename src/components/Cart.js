@@ -45,27 +45,32 @@ export class Cart extends Component {
             <div className='cart'>
                 <h2>Cart</h2>
                 <table>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Remove</th>
-                </tr>
-                {
-                    this.products.map((product, idx) => {
-                        return (<CartItem product={product} key={idx}/>)
-                    })
-                }
-                <tr>
-                    <th>
-                        Total Amount
-                    </th>
-                    <th>
-                        ${parseFloat(this.props.cartStore.totalAmount)}
-                    </th>
-                </tr>
-                <tr>
-                <th><button onClick={()=>{this.props.cartStore.emptyCart();this.emptyCart();alert("Thanks for purchasing! The shopping cart has been cleared")}}>Check Out</button></th>
-                </tr>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Remove</th>
+                    </tr>
+                    {
+                        this.products.map((product, idx) => {
+                            return (<CartItem product={product} key={idx}/>)
+                        })
+                    }
+                    <tr>
+                        <th>Total Amount</th>
+                        <th>
+                            ${parseFloat(this.props.cartStore.totalAmount)}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <button onClick={()=> {
+                                this.props.cartStore.emptyCart();
+                                this.emptyCart();
+                                alert("Thanks for purchasing! The shopping cart has been cleared")}}>
+                                Check Out
+                            </button>
+                        </th>
+                    </tr>
                 </table>
             </div>
         )}
