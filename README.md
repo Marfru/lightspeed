@@ -67,9 +67,14 @@ In the components folder, we have a common folder which has a re-usable **Modal.
 In the styles folder, we have basic **.scss** files with variables, media queries (responsiveness, a basic one) and other styling values.
 
 In **Home.js** I render:
-- **Cart.js** which renders the products added to your cart, and the total sum of it. Also, removable products.
-- **ProductList.js** which renders the fetched data from the API. And yes, I used tables.
-- **ItemsCount.js** just renders the quantity of items in the shopping cart.
+- **Cart.js** => Renders the products added to your cart, and the total sum of it. Also, the ability to remove products.
+- **ProductList.js** => Renders the fetched data from the API. And yes, I used tables.
+- **ItemsCount.js** => Renders the quantity of items in the shopping cart.
+
+Stores:
+
+- **CartStore.js** => The sum of the total amount of products in the cart is done here. Also actions such as pushing products to the cart, emptying and removing products.
+- **ProductStore.js** => Using axios I fetch the API, so I can **inject** it (thanks to mobx's decorators) in Components such as **ProductList**
 
 Rest of components:
 
