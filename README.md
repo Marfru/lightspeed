@@ -76,7 +76,7 @@ Rest of components:
 - **CartItem.js** => Single products added to the shopping cart that are also removable. This is imported in **cart.js**.
 - **MoreInfo.js** => Renders the content of the modal when the users clicks on the "More Info" button on the main overview of the products (grid).
 - **ProductList.js** => Renders the grid of products.
-- **ProductSingle.js** => Rendering individual products where **ProductStore.js** and fetching data.
+- **ProductSingle.js** => Rendering individual products where fetching data is being done by **ProductStore.js**.
 
 ### Design
 
