@@ -1,68 +1,97 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Lightspeed HQ - Technical Assignment
 
-## Available Scripts
+### Description of the assignment:
 
-In the project directory, you can run:
+>Build a shopping cart that has the following functionality using this dummy API http://next.json-generator.com/api/json/get/4kiDK7gxZ:
 
-### `npm start`
+1) Show a grid of items with each item has price, thumbnail & "add to cart" button.
+2) Clicking one item should show more info about the item (description, price, remaining stock & add to cart button).
+3) When you click the add to cart button the item should be added to the cart and the stock number should be updated in the detail view of the item.
+4) The cart should have a checkout button, when clicked show a successful message and clear the cart.
+5) Design is left for you, it's not a design task so nothing fancy, but of course responsive. Functionality is more important.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+>Please provide a `README` file describing your rational, tools & ideas you used and why. Use git (github, gitlab or bitbucket repo) if possible, but if you can't provide a git repo somewhere make sure you send a zip file with the `.git` folder included.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Run Project
 
-### `npm test`
+```sh
+$ git clone git@github.com:Marfru/lightspeed.git
+$ cd lightspeed
+$ npm i
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You need to have an .env in the root since I have used a custom-react-scripts package to support decorators and scss files with ease. The env files enable **decorators** (mobx) and **scss/sass** support. It should be included in the repo, but:
 
-### `npm run build`
+#### .env
+```sh
+REACT_APP_DECORATORS=true
+REACT_APP_SASS_MODULES=true
+REACT_APP_SASS=true
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### If using VSCode
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+You will have some experimental decorators warnings. Only warnings, it still compiles with no problem, but I know it can be annoying. Just create a **tsconfig.json** file in the root of the directory with this content:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "allowJs": true
+    }
+}
+```
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Packages used
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Package | Url |
+| ------ | ------ |
+| mobx | https://www.npmjs.com/package/mobx |
+| mobx-react | https://www.npmjs.com/package/mobx-react |
+| axios | https://www.npmjs.com/package/axios |
+| react-router-dom | https://www.npmjs.com/package/react-router-dom |
+| Custom-React-Scripts | https://www.npmjs.com/package/custom-react-scripts |
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Approach
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+I used mobx and its decorators to build this small shopping cart with basic functionality. I decided to use mobx since I have used it in the past, and for a fast assignment, it was my preferred choice. In my personal opinion, it's also a bit more readable.
 
-## Learn More
+Actions like adding products to the cart or calculating the total amount of the cart that are being occurred in this app, are located in **src/stores/CartStore.js** A problem I encountered, was that the json data from **{product.price}**, had a ',' when it was larger than $999. Decided to replace the comma with an empty string, with a parseFloat included in the product price.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Fetching API using axios is done in **src/stores/ProductStore.js**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+In the components folder, we have a common folder which has a re-usable **Modal.js** and **Success.js** implemented in other components.
 
-### Code Splitting
+In the styles folder, we have basic **.scss** files with variables, media queries (responsiveness, a basic one) and other styling values.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+In **Home.js** I render:
+- **Cart.js** which renders the products added to your cart, and the total sum of it. Also, removable products.
+- **ProductList.js** which renders the fetched data from the API. And yes, I used tables.
+- **ItemsCount.js** just renders the quantity of items in the shopping cart.
 
-### Analyzing the Bundle Size
+Rest of components:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- **Cart.js** => Renders the content of the shopping cart which includes: Added products, Total Amount to be paid, and a checkout button which clears the shopping cart's content.
+- **CartItem.js** => Single products added to the shopping cart that are also removable. This is imported in **cart.js**.
+- **MoreInfo.js** => Renders the content of the modal when the users clicks on the "More Info" button on the main overview of the products (grid).
+- **ProductList.js** => Renders the grid of products.
+- **ProductSingle.js** => Rendering individual products where **ProductStore.js** and fetching data.
 
-### Making a Progressive Web App
+### Design
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Nothing much to add here. Used tables with light colours, and Roboto font just to make it look a bit more smooth.
 
-### Advanced Configuration
+### Responsiveness
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+The media queries variables (located in **components/styles/_vars.scss**) are being applied to the table and main wrapper only. Which still makes it responsive, but it can be worked on a lot.
 
-### Deployment
+### Encountered Problems
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- As mentioned before, rendering the price and calculating the total wasn't working as expected. Until I found the solution to replace the ',' to an empty string.
+- Decorators were not being supported. I used Custom React Scripts (https://www.npmjs.com/package/custom-react-scripts) with the custom **.env** file mentioned above.
+- Didn't have time to render the modal component **Success.js** on the OnClick function located on the Checkout Button in the shopping cart. But I know how to do it. I just added an alert, and when accepted, it clears the shopping cart.
+- I'm more comfortable using Styled Components (or Emotion), but a basic design using SASS was faster.
+- Folders should be more organized.
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

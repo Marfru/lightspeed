@@ -1,0 +1,141 @@
+@import './vars';
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+body { 
+    background-image: $backgroundImage;
+    font-family: $brandFont;
+}
+
+.mainWrapper {
+    width: 800px;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    @media screen and (max-width: $responsiveTablet) {
+        width: 600px;
+    }
+    @media screen and (max-width: $responsivePhoneBig) {
+        width: 400px;
+    }
+    @media screen and (max-width: $responsivePhoneSmall) {
+        width: 368px;
+    }
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+//   -------------Products Component------------------
+
+.product table {
+    width: 800px;
+    max-width: 800px;
+    @media screen and (max-width: $responsiveTablet) {
+        width: 600px;
+    }
+    @media screen and (max-width: $responsivePhoneBig) {
+        width: 400px;
+    }
+    @media screen and (max-width: $responsivePhoneSmall) {
+        width: 368px;
+    }
+}
+
+.product table tr td {
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-right:20px; 
+    text-align: center;  
+}
+
+.product table tr td:first-child {
+    padding-left:20px;
+    padding-right:0;
+}
+
+.product table tr:nth-child(odd) {
+    background: $white
+}
+
+.product table tr:nth-child(even) {
+    background: $brandColor
+}
+
+//   -------------Cart Component------------------
+
+.cart {
+    background-color: $cartBackground;
+    padding: 5px 16px;
+    width: 768px;
+    @media screen and (max-width: $responsiveTablet) {
+        width: 569px
+    }
+    @media screen and (max-width: $responsivePhoneBig) {
+        width: 367px
+    }
+    @media screen and (max-width: $responsivePhoneSmall) {
+        width: 335px
+    }
+}
+
+.cart table {
+    max-width: 768px;
+    min-width: 768px;
+    @media screen and (max-width: $responsiveTablet) {
+        max-width: 600px;
+        min-width: 600px;
+        padding-right: 32px;
+    }
+    @media screen and (max-width: $responsivePhoneBig) {
+        max-width: 400px;
+        min-width: 400px;
+    }
+    @media screen and (max-width: $responsivePhoneSmall) {
+        max-width: 368px;
+        min-width: 368px;
+    }
+}
+
+.cart table tr th {
+    text-align: left;
+}
+
+.cart table tr td {
+      border-bottom: 1px solid #000
+}
+
+//   -------------Modal Component------------------
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: $opacityBackground;
+}
+  
+.modal-main {
+    position:fixed;
+    background: $white;
+    width: 60%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding: 20px 0;
+}
+
+.modal-main button {
+    margin-left: 7px
+}
+  
+.display-block {
+    display: block;
+}
+  
+.display-none {
+    display: none;
+}
