@@ -18,6 +18,7 @@
 $ git clone git@github.com:Marfru/lightspeed.git
 $ cd lightspeed
 $ npm i
+$ npm start
 ```
 
 You need to have an .env in the root since I have used a custom-react-scripts package to support decorators and scss files with ease. The env files enable **decorators** (mobx) and **scss/sass** support. It should be included in the repo, but:
