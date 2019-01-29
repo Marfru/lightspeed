@@ -66,7 +66,8 @@ export class Cart extends Component {
                             <button onClick={()=> {
                                 this.props.cartStore.emptyCart();
                                 this.emptyCart();
-                                alert("Thanks for purchasing! The shopping cart has been cleared")}}>
+                                alert("Thanks for purchasing! The shopping cart has been cleared")}
+                            }>
                                 Check Out
                             </button>
                         </th>
