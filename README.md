@@ -98,6 +98,34 @@ The media queries variables (located in **components/styles/_vars.scss**) are be
 - Decorators were not being supported. I used Custom React Scripts (https://www.npmjs.com/package/custom-react-scripts) with the custom **.env** file mentioned above.
 - Didn't have time to render the modal component **Success.js** on the OnClick function located on the Checkout Button in the shopping cart. But I know how to do it. I just added an alert, and when accepted, it clears the shopping cart.
 - I'm more comfortable using Styled Components (or Emotion), but a basic design using SASS was faster.
-- Folders should be more organized.
+- Folders should be more organized:
+
+```bash
+
+├── components
+│   ├── App.js
+│   ├── Cart.js
+│   ├── CartItem.js
+│   ├── Checkout.js
+│   ├── Home.js
+│   ├── ItemsCount.js
+│   ├── MoreInfo.js
+│   ├── ProductList.js
+│   ├── ProductSingle.js
+│   ├── common
+│   │   ├── Modal.js
+│   │   └── Success.js
+│   └── styles
+│       ├── _main.scss
+│       ├── _vars.scss
+│       └── background.svg
+├── index.js
+├── serviceWorker.js
+└── stores
+    ├── CartStore.js
+    ├── ProductStore.js
+    └── index.js
+
+```
 
 
