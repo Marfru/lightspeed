@@ -1,5 +1,3 @@
-# Lightspeed HQ - Technical Assignment
-
 ### Description of the assignment:
 
 >Build a shopping cart that has the following functionality using this dummy API http://next.json-generator.com/api/json/get/4kiDK7gxZ:
